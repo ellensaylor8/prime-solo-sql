@@ -31,6 +31,24 @@ UPDATE "accounts" SET "account_balance" = 10 WHERE "account_balance" = 0.00 AND 
 SELECT * FROM "accounts" WHERE "transactions_attempted" >= 9;
 
 --5. How do you get the username and account balance of the 3 users with the highest balances, sorted highest to lowest balance? NOTE: Research LIMIT
+SELECT * FROM "accounts" ORDER BY "account_balance" DESC LIMIT 3;
+
+--6. How do you get the username and account balance of the 3 users with the lowest balances, sorted lowest to highest balance?
+SELECT "username", "account_balance" FROM "accounts" ORDER BY "account_balance" ASC LIMIT 3;
+
+--7. How do you get all users with account balances that are more than $100?
+SELECT * FROM "accounts" WHERE "account_balance" >100;
+
+--8. How do you add a new account?
+INSERT INTO "accounts" ("username", "city", "transactions_completed", "transactions_attempted", "account_balance")
+
+VALUES ('billy', 'miami', '4', '5', '1000000');
+
+--9. The bank is losing money in Miami and Phoenix and needs to unload low transaction customers: How do you delete users that reside in miami OR phoenix and have completed fewer than 5 transactions.
+
+DELETE FROM "accounts" WHERE "city" = 'phoenix' AND "transactions_completed" < 5 OR "city" = 'miami' AND "transactions_completed" < 5
+
+
 
 
 
